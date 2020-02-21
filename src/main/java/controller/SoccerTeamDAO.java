@@ -12,7 +12,7 @@ import model.SoccerTeam;
 
 public class SoccerTeamDAO {
 
-	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("SportsTeamList");
+	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("WebSportsTeamList");
 	
 	public List<SoccerTeam> showAllTeams() {
 		// TODO Auto-generated method stub

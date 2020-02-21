@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<style>
+th, td {
+  padding: 1px;
+  text-align: left; 
+  vertical-align: center;
+}
+</style>
+<title>Sports Teams List Index</title>
+</head>
+<body>
+	<h2>Greatest List of Sports Teams ... Ever!</h2>
+	<a href="viewAllTeamsServlet">View entire list of teams</a>
+	<form action="addTeamServlet" method="post">
+	<br />
+		<table style="width: 50%">
+			<tr>
+				<th>City:</th>
+				<td><input type="text" name="city" size="30" required></td>
+			</tr>
+			<tr>
+				<th>Nickname:</th>
+				<td><input type="text" name="nickname" size="30" required></td>
+			</tr>
+			<tr>
+				<th>Number of Players:</th>
+				<td><input type="number" name="numOfPlayers" size="3" maxlength="3" min="1" max="999" required></td>
+			</tr>
+			<tr>
+				<th><input type="submit" value="Add Item"></th>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
