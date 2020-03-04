@@ -16,7 +16,8 @@ public class SoccerTeamDAO {
 	
 	public List<SoccerTeam> showAllTeams() {
 		// TODO Auto-generated method stub
-		EntityManager em = emfactory.createEntityManager();
+		EntityManager em = emfactory.createEntityManager();		
+		em.getEntityManagerFactory().getCache().evict(SoccerTeam.class);
 		
 		List<SoccerTeam> allTeams = em.createQuery("SELECT teams FROM SoccerTeam teams").getResultList();
 		

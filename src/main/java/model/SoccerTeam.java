@@ -30,7 +30,7 @@ public class SoccerTeam {
 	@Column(name="NUM_OF_PLAYERS")
 	private int numOfPlayers;
 	
-	@OneToMany(mappedBy="team", orphanRemoval=true, cascade={CascadeType.MERGE, CascadeType.REMOVE}, fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="team", orphanRemoval=true, cascade={CascadeType.MERGE, CascadeType.REMOVE, CascadeType.REFRESH}, fetch=FetchType.EAGER)
 	private List<SoccerPlayer> players;
 	
 	public SoccerTeam() {
@@ -50,6 +50,15 @@ public class SoccerTeam {
 		this.city = city;
 		this.nickname = nickname;
 		this.numOfPlayers = numOfPlayers;
+	}
+	
+	public SoccerTeam(int id, String city, String nickname, int numOfPlayers, List<SoccerPlayer> players) {
+		super();
+		this.id = id;
+		this.city = city;
+		this.nickname = nickname;
+		this.numOfPlayers = numOfPlayers;
+		this.players = players;
 	}
 	
 	public int getId() {
