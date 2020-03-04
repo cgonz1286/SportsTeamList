@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.SoccerPlayer;
 import model.SoccerTeam;
 
 /**
@@ -37,35 +38,69 @@ public class NavigationServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		String path = "";
 		
-		SoccerTeamDAO dao = new SoccerTeamDAO();
-		String action = request.getParameter("doThisToTeam");
-		
-		String path = "/viewAllTeamsServlet";
-		
-		if (action.equals("Delete")) {
-			try {
-				Integer tempId = Integer.parseInt(request.getParameter("id"));
-				SoccerTeam teamToDelete = dao.searchForTeamById(tempId);
-				dao.deleteTeam(teamToDelete);
-			} catch (NumberFormatException e) {
-				System.out.println("Forgot to select a team");
-			}	
-		} else if (action.equals("Edit")) {
-			try {
-				Integer tempId = Integer.parseInt(request.getParameter("id"));
-				SoccerTeam teamToEdit = dao.searchForTeamById(tempId);
-				request.setAttribute("teamToEdit", teamToEdit);
-				path = "/edit-team.jsp";
-			} catch (NumberFormatException e) {
-				System.out.println("Forgot to select a team");
-			}
+		if(request.getParameter("doThisToTeam") != null) {
+			SoccerTeamDAO dao = new SoccerTeamDAO();
+			String action = request.getParameter("doThisToTeam");
 			
-		} else if (action.equals("Add")) {
-			path = "/index.html";
+			path = "/viewAllTeamsServlet";
+			
+			if (action.equals("Delete")) {
+				try {
+					Integer tempId = Integer.parseInt(request.getParameter("id"));
+					SoccerTeam teamToDelete = dao.searchForTeamById(tempId);
+					dao.deleteTeam(teamToDelete);
+				} catch (NumberFormatException e) {
+					System.out.println("Forgot to select a team");
+				}	
+			} else if (action.equals("Edit")) {
+				try {
+					Integer tempId = Integer.parseInt(request.getParameter("id"));
+					SoccerTeam teamToEdit = dao.searchForTeamById(tempId);
+					request.setAttribute("teamToEdit", teamToEdit);
+					path = "/edit-team.jsp";
+				} catch (NumberFormatException e) {
+					System.out.println("Forgot to select a team");
+				}
+			} else if (action.equals("Add")) {
+				path = "/index.html";
+			}
+		} else if(request.getParameter("doThisToPlayer") != null) {
+			SoccerPlayerDAO playerDAO = new SoccerPlayerDAO();
+			String action = request.getParameter("doThisToPlayer");
+			
+			path = "/viewAllPlayersServlet";
+			
+			if (action.equals("Delete")) {
+				try {
+					Integer tempId = Integer.parseInt(request.getParameter("id"));
+					SoccerPlayer playerToDelete = playerDAO.searchForPlayerById(tempId);
+					playerDAO.deletePlayer(playerToDelete);
+				} catch (NumberFormatException e) {
+					System.out.println("Forgot to select a player");
+				}	
+			} else if (action.equals("Edit")) {
+				try {
+					Integer tempId = Integer.parseInt(request.getParameter("id"));
+					SoccerPlayer playerToEdit = playerDAO.searchForPlayerById(tempId);
+					request.setAttribute("playerToEdit", playerToEdit);
+					
+					SoccerTeamDAO teamDAO = new SoccerTeamDAO();
+					request.setAttribute("allTeams", teamDAO.showAllTeams());
+					request.setAttribute("currentTeam", teamDAO.searchForTeamById(playerToEdit.getTeam().getId()));
+					
+					path = "/edit-player.jsp";
+				} catch (NumberFormatException e) {
+					System.out.println("Forgot to select a player");
+				}
+			} else if (action.equals("Add")) {
+				SoccerTeamDAO teamDAO = new SoccerTeamDAO();
+				request.setAttribute("allTeams", teamDAO.showAllTeams());				
+				
+				path = "/add-player.jsp";
+			}
 		}
-		
 		getServletContext().getRequestDispatcher(path).forward(request, response);
 	}
 

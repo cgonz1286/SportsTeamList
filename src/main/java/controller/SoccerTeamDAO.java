@@ -40,10 +40,11 @@ public class SoccerTeamDAO {
 		em.getTransaction().begin();
 		
 		//Write query to retrieve team to delete
-		TypedQuery<SoccerTeam> typedQuery = em.createQuery("select team from SoccerTeam team where team.city = :selectedCity and team.nickname = :selectedNickname " + 
-														   "and team.numOfPlayers = :selectedNumOfPlayers", SoccerTeam.class);
+		TypedQuery<SoccerTeam> typedQuery = em.createQuery("select team from SoccerTeam team where team.id = :selectedId and team.city = :selectedCity " + 
+														   "and team.nickname = :selectedNickname and team.numOfPlayers = :selectedNumOfPlayers", SoccerTeam.class);
 		
 		//Substitute parameter with actual data from the toDelete item
+		typedQuery.setParameter("selectedId", toDelete.getId());
 		typedQuery.setParameter("selectedCity", toDelete.getCity());
 		typedQuery.setParameter("selectedNickname", toDelete.getNickname());
 		typedQuery.setParameter("selectedNumOfPlayers", toDelete.getNumOfPlayers());

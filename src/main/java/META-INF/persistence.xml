@@ -3,6 +3,7 @@
 	<persistence-unit name="WebSportsTeamList" transaction-type="RESOURCE_LOCAL">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<class>model.SoccerTeam</class>
+		<class>model.SoccerPlayer</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://cis175.c9w2omv3kack.us-east-2.rds.amazonaws.com/sports"/>
