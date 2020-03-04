@@ -1,5 +1,6 @@
 package model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,7 +25,7 @@ public class SoccerPlayer {
 	@Column(name="PLAYER_NUMBER")
 	private int playerNumber;
 	
-	@ManyToOne
+	@ManyToOne(cascade={CascadeType.MERGE, CascadeType.REFRESH})
 	@JoinColumn(name="TEAM_ID")
 	private SoccerTeam team;
 	

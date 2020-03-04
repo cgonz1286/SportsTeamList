@@ -67,6 +67,7 @@ public class NavigationServlet extends HttpServlet {
 				path = "/index.html";
 			}
 		} else if(request.getParameter("doThisToPlayer") != null) {
+			SoccerTeamDAO teamDAO = new SoccerTeamDAO();
 			SoccerPlayerDAO playerDAO = new SoccerPlayerDAO();
 			String action = request.getParameter("doThisToPlayer");
 			
@@ -86,7 +87,6 @@ public class NavigationServlet extends HttpServlet {
 					SoccerPlayer playerToEdit = playerDAO.searchForPlayerById(tempId);
 					request.setAttribute("playerToEdit", playerToEdit);
 					
-					SoccerTeamDAO teamDAO = new SoccerTeamDAO();
 					request.setAttribute("allTeams", teamDAO.showAllTeams());
 					request.setAttribute("currentTeam", teamDAO.searchForTeamById(playerToEdit.getTeam().getId()));
 					
@@ -95,7 +95,6 @@ public class NavigationServlet extends HttpServlet {
 					System.out.println("Forgot to select a player");
 				}
 			} else if (action.equals("Add")) {
-				SoccerTeamDAO teamDAO = new SoccerTeamDAO();
 				request.setAttribute("allTeams", teamDAO.showAllTeams());				
 				
 				path = "/add-player.jsp";
