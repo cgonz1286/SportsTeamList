@@ -13,9 +13,12 @@ th, td {
 </head>
 <body>
 	<h2>Greatest List of Sports Teams ... Ever!</h2>
-	<a href="viewAllTeamsServlet">View entire list of teams</a>
-	<form action="addTeamServlet" method="post">
+	<a href="viewAllTeamsServlet">View/update list of teams</a> <br />
+	<a href="viewAllPlayersServlet">View/update list of players</a> <br />
+	<a href="addPlayerServlet">Add a player</a>
 	<br />
+	<form action="addTeamServlet" method="post">
+		<br />
 		<table style="width: 50%">
 			<tr>
 				<th>City:</th>
@@ -30,9 +33,10 @@ th, td {
 				<td><input type="number" name="numOfPlayers" size="3" maxlength="3" min="1" max="999" required></td>
 			</tr>
 			<tr>
-				<th><input type="submit" value="Add Item"></th>
+				<th><input type="submit" value="Add Team"></th>
 			</tr>
 		</table>
 	</form>
+	<br />
 </body>
 </html>
