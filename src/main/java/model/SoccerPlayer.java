@@ -25,7 +25,6 @@ public class SoccerPlayer {
 	@Column(name="PLAYER_NUMBER")
 	private int playerNumber;
 	
-	@ManyToOne(cascade={CascadeType.MERGE, CascadeType.REFRESH})
 	@JoinColumn(name="TEAM_ID")
 	private SoccerTeam team;
 	
@@ -35,6 +34,14 @@ public class SoccerPlayer {
 	
 	public SoccerPlayer(String playerName, int playerNumber, SoccerTeam team) {
 		super();
+		this.playerName = playerName;
+		this.playerNumber = playerNumber;
+		this.team = team;
+	}
+	
+	public SoccerPlayer(int playerId, String playerName, int playerNumber, SoccerTeam team) {
+		super();
+		this.playerId = playerId;
 		this.playerName = playerName;
 		this.playerNumber = playerNumber;
 		this.team = team;

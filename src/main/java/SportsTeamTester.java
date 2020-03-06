@@ -31,19 +31,24 @@ public class SportsTeamTester {
 //			System.out.println(p.toString());
 //		}
 		
-		SoccerPlayer player = playerDAO.searchForPlayerById(9);
+		SoccerPlayer player = playerDAO.searchForPlayerById(36);
+		player.setPlayerName("Luke Gonzalez");
+		player.setPlayerNumber(1);
+		player.setTeam(player.getTeam());
+		
+		playerDAO.updatePlayer(player);
 //		playerDAO.deletePlayer(player);
 		
-		SoccerTeam existingTeam = teamDAO.searchForTeamById(7);
+//		SoccerTeam existingTeam = teamDAO.searchForTeamById(7);
 		
 //		SoccerPlayer newPlayer = new SoccerPlayer("Abbie", 18, existingTeam);
 //		existingTeam.addPlayer(newPlayer);
-	    teamDAO.updateTeam(existingTeam);
+//	    teamDAO.updateTeam(existingTeam);
 		
 //		SoccerTeam newTeam = new SoccerTeam("Chelsea", "The Blues", 25);		
 //		teamDAO.insertTeam(newTeam);
 //		
-		System.out.println(existingTeam.toString());
+//		System.out.println(existingTeam.toString());
 		
 //		teamDAO.deleteTeam(existingTeam);		
 
