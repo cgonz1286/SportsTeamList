@@ -130,7 +130,7 @@ public class SoccerPlayerDAO {
 		// TODO Auto-generated method stub
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
-		
+
 		em.merge(toEdit);
 		em.getTransaction().commit();
 		

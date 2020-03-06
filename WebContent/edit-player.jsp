@@ -22,7 +22,7 @@ th, td {
 			</tr>
 			<tr>
 				<th>Player Number:</th>
-				<td><input type="text" name="playerNumber" value="${playerToEdit.playerNumber}"></td>
+				<td><input type="number" name="playerNumber" size="3" maxlength="3" min="0" max="999" value="${playerToEdit.playerNumber}" required></td>
 			</tr>
 			<tr>
 				<th>Team:</th>

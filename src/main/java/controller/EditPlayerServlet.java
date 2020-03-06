@@ -11,7 +11,7 @@ import model.SoccerPlayer;
 import model.SoccerTeam;
 
 /**
- * Servlet implementation class EditTeamServlet
+ * Servlet implementation class EditPlayerServlet
  */
 @WebServlet("/editPlayerServlet")
 public class EditPlayerServlet extends HttpServlet {
@@ -39,7 +39,7 @@ public class EditPlayerServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		
+
 		SoccerPlayerDAO playerDAO = new SoccerPlayerDAO();
 		SoccerTeamDAO teamDAO = new SoccerTeamDAO();
 		

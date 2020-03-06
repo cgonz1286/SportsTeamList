@@ -32,6 +32,6 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 		<input type="submit" value="Add" name="doThisToPlayer">
 	</form>
 	<br />
-		<a href="index.html">Back to index</a>
+	<a href="index.html">Back to index</a>
 </body>
 </html>
